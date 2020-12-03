@@ -1,0 +1,14 @@
+#!/bin/sh
+if [[ $# != 1 ]] ; then
+    >&2 echo "Укажите ровно один аргумент соответствующий количеству тестов, которые будете вводить!"
+    exit 1
+fi
+make clean > /dev/null
+make readingassistant
+tests=$(ls -1 | grep tests-) 
+for i in $(seq 1 $1); do
+   echo "Веведите $i тест:"
+   ./run >$tests/$i.dat 
+   echo "Введите ответ на $i тест:"
+   ./run >$tests/$i.dat 
+done

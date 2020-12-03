@@ -1,0 +1,4 @@
+#!/bin/bash
+
+mv tests-* ./CAOS-tests
+
