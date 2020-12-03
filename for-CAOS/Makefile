@@ -9,4 +9,4 @@ readingassistant: readingassistant.cpp
 
 
 clean:
-	rm main readingassistant
+	@(rm -f main readingassistant)

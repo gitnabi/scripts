@@ -3,11 +3,11 @@ if [[ $# != 1 ]] ; then
     >&2 echo "Укажите ровно один аргумент соответствующий количеству тестов, которые надо запустить!"
     exit 1
 fi
-make clean > /dev/null
+make clean
 make main
 tests=$(ls -1 | grep tests-) 
 for i in $(seq 1 $1); do
-   ./run <$tests/$i.dat >ans
+   ./main <$tests/$i.dat >ans
    if diff ans $tests/$i.ans; then
        echo "Test $i OK"
    else
