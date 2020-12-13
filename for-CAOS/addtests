@@ -1,12 +1,12 @@
 #!/bin/sh
-if [[ $# != 1 ]] ; then
-    >&2 echo "Укажите ровно один аргумент соответствующий количеству тестов, которые будете вводить!"
+if [[ $# != 2 ]] ; then
+    >&2 echo "Укажите номер теста, с которого начинается нумерация, и укажите количеству тестов, которые будете вводить!"
     exit 1
 fi
 make clean
 make readingassistant
 tests=$(ls -1 | grep tests-) 
-for i in $(seq 1 $1); do
+for i in $(seq $1 $2); do
    echo "Введите $i тест:"
    ./readingassistant >$tests/$i.dat 
    echo "Введите ответ на $i тест:"
